@@ -64,6 +64,8 @@ A Discord bot that allows for the democratic pinning of messages.
 - `webhook.id` is the `WEBHOOK_ID` portion of the webhook URL: `https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN`
 - `webhook.token` is the `WEBHOOK_TOKEN` portion of the webhook URL: `https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN`
 
+4. `npm start` to run the bot.
+
 Visit for more help or information!
 
 <a href="https://discord.gg/WjEFnzC">
