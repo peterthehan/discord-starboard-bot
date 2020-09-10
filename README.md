@@ -4,6 +4,10 @@
 
 A Discord bot that allows for the democratic pinning of messages.
 
+<div align="center">
+  <img src="https://raw.githubusercontent.com/peterthehan/assets/master/repositories/discord-starboard-bot/starboard.gif" />
+</div>
+
 ## Setup
 
 1. Follow the instructions in [create-discord-bot](https://github.com/peterthehan/create-discord-bot).
