@@ -38,6 +38,8 @@ A Discord bot that allows for the democratic pinning of messages.
 ]
 ```
 
+> You can have multiple starboards in one server! Simply add more rule objects inside the `config.json`. The only requirement is that `guildId` and `emoji` must form a unique pair.
+
 - `reactionThreshold` is the number of reactions needed before the message gets pinned.
 - `thresholdOverrideUserIds` are the users whose reactions automatically pins messages. This does NOT bypass all the other rules, only the threshold requirement.
 - `color` is the color of the embed.

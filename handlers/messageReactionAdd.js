@@ -4,9 +4,10 @@ const messageCache = {};
 
 class Starboard {
   constructor(messageReaction, user) {
-    this.emoji = messageReaction.emoji;
+    this.emoji = messageReaction.emoji.id || messageReaction.emoji.name;
     this.message = messageReaction.message;
     this.user = user;
+    this.ruleKey = `${this.message.guild.id}-${this.emoji}`;
     this.rule = null;
   }
 
@@ -16,15 +17,15 @@ class Starboard {
       this.user.bot ||
       this.user.system ||
       this.message.channel.type !== "text" ||
-      !(this.message.guild.id in this.user.client.starboardRules)
+      !(this.ruleKey in this.user.client.starboardRules)
     ) {
       return false;
     }
 
-    this.rule = this.user.client.starboardRules[this.message.guild.id];
+    this.rule = this.user.client.starboardRules[this.ruleKey];
 
     return !(
-      this.rule.emoji !== (this.emoji.id || this.emoji.name) ||
+      this.rule.emoji !== this.emoji ||
       (this.rule.ignoreNsfw && this.message.channel.nsfw) ||
       (this.rule.ignoreSelf && this.message.author === this.user) ||
       (this.rule.ignoreBotMessage && this.message.author.bot) ||
