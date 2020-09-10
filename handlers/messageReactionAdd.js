@@ -34,16 +34,24 @@ class Starboard {
 
   validateCache(cache) {
     if (!(this.message.id in cache)) {
-      cache[this.message.id] = new Set();
+      cache[this.message.id] = { starred: false, users: new Set() };
     }
 
-    if (cache[this.message.id].size >= this.rule.reactionThreshold) {
+    if (cache[this.message.id].starred) {
       return false;
     }
 
-    cache[this.message.id].add(this.user.id);
+    cache[this.message.id].users.add(this.user.id);
 
-    return cache[this.message.id].size >= this.rule.reactionThreshold;
+    const isValid =
+      this.rule.thresholdOverrideUserIds.includes(this.user.id) ||
+      cache[this.message.id].users.size >= this.rule.reactionThreshold;
+    if (isValid) {
+      cache[this.message.id].starred = true;
+      cache[this.message.id].users.clear();
+    }
+
+    return isValid;
   }
 
   getImages() {

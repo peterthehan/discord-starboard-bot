@@ -18,6 +18,7 @@ A Discord bot that allows for the democratic pinning of messages.
 [
   {
     "reactionThreshold": 5,
+    "thresholdOverrideUserIds": ["USER_1_ID", "USER_2_ID"],
     "color": "ffac33",
     "footerText": "Starboard",
     "jumpText": "link",
@@ -38,6 +39,7 @@ A Discord bot that allows for the democratic pinning of messages.
 ```
 
 - `reactionThreshold` is the number of reactions needed before the message gets pinned.
+- `thresholdOverrideUserIds` are the users whose reactions automatically pins messages. This does NOT bypass all the other rules, only the threshold requirement.
 - `color` is the color of the embed.
 - `footerText` is the text rendered at the footer of the embed.
 - `jumpText` is the hyperlink text rendered to jump to the message.

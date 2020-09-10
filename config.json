@@ -1,6 +1,7 @@
 [
   {
     "reactionThreshold": 5,
+    "thresholdOverrideUserIds": ["206161807491072000"],
     "color": "ffac33",
     "footerText": "Starboard",
     "jumpText": "link",
