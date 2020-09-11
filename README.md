@@ -21,56 +21,78 @@ A Discord bot that allows for the democratic pinning of messages.
 ```js
 [
   {
-    "reactionThreshold": 5,
-    "thresholdOverrideUserIds": ["USER_1_ID", "USER_2_ID"],
-    "color": "ffac33",
-    "footerText": "Starboard",
-    "jumpText": "link",
-    "renderJumpLink": true,
-    "emoji": "⭐",
-    "ignoreNsfw": false,
-    "ignoreSelf": true,
-    "ignoreBotMessage": false,
-    "ignoreChannelIds": ["CHANNEL_1_ID", "CHANNEL_2_ID"],
     "guildId": "GUILD_ID",
-    "webhook": {
-      "id": "WEBHOOK_ID",
-      "token": "WEBHOOK_TOKEN"
+    "channelId": "CHANNEL_1_ID",
+    "reactionThreshold": 5,
+    "upvote": {
+      "emojis": ["⭐", "⬆️"],
+      "overrideEmojis": ["🌟"],
+      "overrideUserIds": ["USER_1_ID", "USER_2_ID"]
+    },
+    "downvote": {
+      "emojis": ["⬇️"],
+      "overrideEmojis": ["⛔"],
+      "overrideUserIds": ["USER_1_ID"]
+    },
+    "embed": {
+      "color": "ffac33",
+      "footerText": "Starboard",
+      "jumpText": "link",
+      "renderJumpLink": true
+    },
+    "ignore": {
+      "nsfw": false,
+      "self": true,
+      "botMessage": false,
+      "channelIds": ["CHANNEL_2_ID"]
     }
   },
   // ...Add as many rules as you want.
 ]
 ```
 
-> You can have multiple starboards in one server! Simply add more rule objects inside the `config.json`. The only requirement is that `guildId` and `emoji` must form a unique pair.
+> You can have multiple starboards in one server! Simply add more rule objects inside the `config.json` file. The only requirement is that **all** the `emojis` between each rule **must** be unique.
 
+- `guildId` is the server you wish to enable starboard for.
+- `channelId` is the text channel you wish to be the starboard.
 - `reactionThreshold` is the number of reactions needed before the message gets pinned.
-- `thresholdOverrideUserIds` are the users whose reactions automatically pins messages. This does NOT bypass all the other rules, only the threshold requirement.
-- `color` is the color of the embed.
-- `footerText` is the text rendered at the footer of the embed.
-- `jumpText` is the hyperlink text rendered to jump to the message.
-- `renderJumpLink` determines whether the hyperlink text renders (`true`) or not (`false`).
-- `emoji` can be:
+- `upvote`/`downvote`
 
-  - A unicode emoji. https://emojipedia.org is a good reference to copy and paste from.
+  - `emojis` are the reaction emojis the bot tracks. The message gets pinned when the count difference between upvotes and downvotes is greater than or equal to the `reactionThreshold`.
+  - `overrideEmojis` are the reaction emojis that automatically pins the message (`upvote`) or prevents the pinning of the message (`downvote`) no matter what the count was at.
+  - `overrideUserIds` are the users who can use `overrideEmojis`.
 
-    ```js
-    "emoji": "😳"
-    ```
+    > Leave `downvote`'s array options empty `[]` if you wish to not use the downvote logic.
 
-  - An emoji id for custom emojis. You can get a custom emoji's ID by sending `\:YourCustomEmoji:` in chat (prefix a backslash `\` character in front of your desired emoji).
+    > Override logic does **not** bypass all the other rules defined in `ignore`, **only** the threshold requirement.
 
-    ```js
-    "emoji": "716344914706694165"
-    ```
+  - An emoji can be:
 
-- `ignoreNsfw` determines whether the bot ignores NSFW channels (`true`) or not (`false`).
-- `ignoreSelf` determines whether the bot ignores reactions made by the message's author (`true`) or not (`false`).
-- `ignoreBotMessage` determines whether the bot ignores bot messages (`true`) or not (`false`).
-- `ignoreChannelIds` are the text channels the bot ignores.
-- `guildId` is the guild you wish to enable starboard for.
-- `webhook.id` is the `WEBHOOK_ID` portion of the webhook URL: `https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN`
-- `webhook.token` is the `WEBHOOK_TOKEN` portion of the webhook URL: `https://discord.com/api/webhooks/WEBHOOK_ID/WEBHOOK_TOKEN`
+    - A unicode emoji. https://emojipedia.org is a good reference to copy and paste from.
+
+      ```js
+      "😳", "🥺", // etc
+      ```
+
+    - An emoji id for custom emojis. You can get a custom emoji's ID by sending `\:YourCustomEmoji:` in chat (prefix a backslash `\` character in front of your desired emoji).
+
+      ```js
+      "716344914706694165", "622635442013208589", // etc
+      ```
+
+- `embed`
+
+  - `color` is the color of the embed.
+  - `footerText` is the text rendered at the footer of the embed.
+  - `jumpText` is the hyperlink text rendered to jump to the message.
+  - `renderJumpLink` determines whether the hyperlink text renders (`true`) or not (`false`).
+
+- `ignore`
+
+  - `nsfw` determines whether the bot ignores NSFW channels (`true`) or not (`false`).
+  - `self` determines whether the bot ignores reactions made by the message's author (`true`) or not (`false`).
+  - `botMessage` determines whether the bot ignores bot messages (`true`) or not (`false`).
+  - `channelIds` are the text channels the bot ignores.
 
 4. `npm start` to run the bot.
 

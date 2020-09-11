@@ -5,7 +5,18 @@ module.exports = async (client) => {
 
   client.starboardRules = {};
   rules.forEach((rule) => {
-    const ruleKey = `${rule.guildId}-${rule.emoji}`;
-    client.starboardRules[ruleKey] = rule;
+    if (!(rule.guildId in client.starboardRules)) {
+      client.starboardRules[rule.guildId] = [];
+    }
+
+    client.starboardRules[rule.guildId].push({
+      emojis: new Set([
+        ...rule.upvote.emojis,
+        ...rule.upvote.overrideEmojis,
+        ...rule.downvote.emojis,
+        ...rule.downvote.overrideEmojis,
+      ]),
+      rule,
+    });
   });
 };

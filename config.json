@@ -1,20 +1,29 @@
 [
   {
-    "reactionThreshold": 5,
-    "thresholdOverrideUserIds": ["206161807491072000"],
-    "color": "ffac33",
-    "footerText": "Starboard",
-    "jumpText": "link",
-    "renderJumpLink": true,
-    "emoji": "⭐",
-    "ignoreNsfw": false,
-    "ignoreSelf": true,
-    "ignoreBotMessage": false,
-    "ignoreChannelIds": ["649020657522180128"],
     "guildId": "258167954913361930",
-    "webhook": {
-      "id": "",
-      "token": ""
+    "channelId": "752760008483012639",
+    "reactionThreshold": 5,
+    "upvote": {
+      "emojis": ["⭐", "⬆️"],
+      "overrideEmojis": ["🌟"],
+      "overrideUserIds": ["206161807491072000"]
+    },
+    "downvote": {
+      "emojis": ["⬇️"],
+      "overrideEmojis": ["⛔"],
+      "overrideUserIds": ["206161807491072000"]
+    },
+    "embed": {
+      "color": "ffac33",
+      "footerText": "Starboard",
+      "jumpText": "link",
+      "renderJumpLink": true
+    },
+    "ignore": {
+      "nsfw": false,
+      "self": true,
+      "botMessage": false,
+      "channelIds": ["649020657522180128"]
     }
   }
 ]
