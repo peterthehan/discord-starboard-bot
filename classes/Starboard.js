@@ -1,8 +1,9 @@
 module.exports = class Starboard {
   constructor(messageReaction, user) {
+    this.messageReaction = messageReaction;
+    this.user = user;
     this.emoji = messageReaction.emoji.id || messageReaction.emoji.name;
     this.message = messageReaction.message;
-    this.user = user;
     this.client = user.client;
     this.rule = null;
   }
@@ -23,6 +24,26 @@ module.exports = class Starboard {
     this.rule = rule;
 
     return Boolean(this.rule);
+  }
+
+  handleVote() {
+    if (this.rule.votePolicy === "public") {
+      return;
+    }
+
+    if (this.rule.votePolicy === "private") {
+      if (!this.messageReaction.users.cache.has(this.client.user.id)) {
+        this.message.react(this.emoji);
+      }
+
+      this.messageReaction.users.remove(this.user);
+      return;
+    }
+
+    if (this.rule.votePolicy === "hidden") {
+      this.messageReaction.users.remove(this.user);
+      return;
+    }
   }
 
   validateRules() {
@@ -81,6 +102,15 @@ module.exports = class Starboard {
     return isValid;
   }
 
+  async getWebhook() {
+    const channel = await this.client.channels.fetch(this.rule.channelId);
+    const webhooks = await channel.fetchWebhooks();
+
+    return !webhooks.size
+      ? channel.createWebhook(this.client.user.username)
+      : webhooks.first();
+  }
+
   getImages() {
     const embeds = [
       ...this.message.attachments
@@ -117,15 +147,6 @@ module.exports = class Starboard {
     };
 
     return embeds;
-  }
-
-  async getWebhook() {
-    const channel = await this.client.channels.fetch(this.rule.channelId);
-    const webhooks = await channel.fetchWebhooks();
-
-    return !webhooks.size
-      ? channel.createWebhook(this.client.user.username)
-      : webhooks.first();
   }
 
   async sendWebhook() {

@@ -3,6 +3,7 @@
     "guildId": "258167954913361930",
     "channelId": "752760008483012639",
     "reactionThreshold": 5,
+    "votePolicy": "blackout",
     "upvote": {
       "emojis": ["⭐", "⬆️"],
       "overrideEmojis": ["🌟"],

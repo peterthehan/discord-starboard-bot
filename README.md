@@ -24,6 +24,7 @@ A Discord bot that allows for the democratic pinning of messages.
     "guildId": "GUILD_ID",
     "channelId": "CHANNEL_1_ID",
     "reactionThreshold": 5,
+    "votePolicy": "public",
     "upvote": {
       "emojis": ["⭐", "⬆️"],
       "overrideEmojis": ["🌟"],
@@ -56,6 +57,12 @@ A Discord bot that allows for the democratic pinning of messages.
 - `guildId` is the server you wish to enable starboard for.
 - `channelId` is the text channel you wish to be the starboard.
 - `reactionThreshold` is the number of reactions needed before the message gets pinned.
+- `votePolicy` **must** be one of the following strings:
+
+  - `public`: Reaction count is allowed to accumulate without bot interference. Anyone can see the total reaction counts.
+  - `private`: Bot removes all user reactions and replaces it with its own. Vote count is not visible but the bot's reaction lets users know that _someone_ has reacted.
+  - `hidden`: Bot removes all user reactions. Vote count is not visible at all.
+
 - `upvote`/`downvote`
 
   - `emojis` are the reaction emojis the bot tracks. The message gets pinned when the count difference between upvotes and downvotes is greater than or equal to the `reactionThreshold`.
