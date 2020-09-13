@@ -20,7 +20,9 @@ module.exports = class Starboard {
     }
 
     const rules = this.client.starboardRules[this.message.guild.id];
-    const { rule } = rules.find((rule) => rule.emojis.has(this.emoji));
+    const { rule } = rules.find((rule) => rule.emojis.has(this.emoji)) || {
+      rule: false,
+    };
     this.rule = rule;
 
     return Boolean(this.rule);
