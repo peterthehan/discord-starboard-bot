@@ -48,16 +48,11 @@ module.exports = class Starboard {
     }
   }
 
-  isOverrideUser() {
-    return [
-      ...this.rule.upvote.overrideUserIds,
-      ...this.rule.downvote.overrideUserIds,
-    ].includes(this.user.id);
-  }
-
   validateRules() {
     return (
-      (this.rule.ignore.rules && this.isOverrideUser()) ||
+      (this.rule.ignore.rules &&
+        (this.validateOverrides(this.rule.upvote) ||
+          this.validateOverrides(this.rule.downvote))) ||
       !(
         (this.rule.ignore.nsfw && this.message.channel.nsfw) ||
         (this.rule.ignore.self && this.message.author === this.user) ||
