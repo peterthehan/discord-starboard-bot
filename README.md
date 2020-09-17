@@ -42,6 +42,7 @@ A Discord bot that allows for the democratic pinning of messages.
       "renderJumpLink": true
     },
     "ignore": {
+      "rules": true,
       "nsfw": false,
       "self": true,
       "botMessage": false,
@@ -71,8 +72,6 @@ A Discord bot that allows for the democratic pinning of messages.
 
     > Leave `downvote`'s array options empty `[]` if you wish to not use the downvote logic.
 
-    > Override logic does **not** bypass all the other rules defined in `ignore`, **only** the threshold requirement.
-
   - An emoji can be:
 
     - A unicode emoji. https://emojipedia.org is a good reference to copy and paste from.
@@ -96,6 +95,7 @@ A Discord bot that allows for the democratic pinning of messages.
 
 - `ignore`
 
+  - `rules` determines whether override users can ignore all the rules listed below (`true`) or not (`false`).
   - `nsfw` determines whether the bot ignores NSFW channels (`true`) or not (`false`).
   - `self` determines whether the bot ignores reactions made by the message's author (`true`) or not (`false`).
   - `botMessage` determines whether the bot ignores bot messages (`true`) or not (`false`).

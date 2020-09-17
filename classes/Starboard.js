@@ -48,12 +48,22 @@ module.exports = class Starboard {
     }
   }
 
+  isOverrideUser() {
+    return [
+      ...this.rule.upvote.overrideUserIds,
+      ...this.rule.downvote.overrideUserIds,
+    ].includes(this.user.id);
+  }
+
   validateRules() {
-    return !(
-      (this.rule.ignore.nsfw && this.message.channel.nsfw) ||
-      (this.rule.ignore.self && this.message.author === this.user) ||
-      (this.rule.ignore.botMessage && this.message.author.bot) ||
-      this.rule.ignore.channelIds.includes(this.message.channel.id)
+    return (
+      (this.rule.ignore.rules && this.isOverrideUser()) ||
+      !(
+        (this.rule.ignore.nsfw && this.message.channel.nsfw) ||
+        (this.rule.ignore.self && this.message.author === this.user) ||
+        (this.rule.ignore.botMessage && this.message.author.bot) ||
+        this.rule.ignore.channelIds.includes(this.message.channel.id)
+      )
     );
   }
 

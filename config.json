@@ -21,6 +21,7 @@
       "renderJumpLink": true
     },
     "ignore": {
+      "rules": true,
       "nsfw": false,
       "self": true,
       "botMessage": false,
