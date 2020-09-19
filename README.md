@@ -80,7 +80,7 @@ A Discord bot that allows for the democratic pinning of messages.
         "😳", "🥺", // etc
         ```
 
-      - An emoji id for custom emojis. You can get a custom emoji's ID by sending `\:YourCustomEmoji:` in chat (prefix a backslash `\` character in front of your desired emoji).
+      - An emoji ID for custom emojis. You can get a custom emoji's ID by sending `\:YourCustomEmoji:` in chat (prefix a backslash `\` character in front of your desired emoji).
 
         ```js
         "716344914706694165", "622635442013208589", // etc
