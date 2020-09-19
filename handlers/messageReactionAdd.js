@@ -16,4 +16,5 @@ module.exports = async (messageReaction, user) => {
   }
 
   starboard.sendWebhook();
+  starboard.sendPinnedIndicatorMessage();
 };

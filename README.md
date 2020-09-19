@@ -35,6 +35,10 @@ A Discord bot that allows for the democratic pinning of messages.
       "overrideEmojis": ["⛔"],
       "overrideUserIds": ["USER_1_ID"]
     },
+    "pinnedIndicator": {
+      "message": "{1}'s message was pinned to {2}.",
+      "pingUser": true
+    },
     "embed": {
       "color": "ffac33",
       "footerText": "Starboard",
@@ -67,24 +71,33 @@ A Discord bot that allows for the democratic pinning of messages.
 - `upvote`/`downvote`
 
   - `emojis` are the reaction emojis the bot tracks. The message gets pinned when the count difference between upvotes and downvotes is greater than or equal to the `reactionThreshold`.
+
+    - An emoji can be:
+
+      - A unicode emoji. https://emojipedia.org is a good reference to copy and paste from.
+
+        ```js
+        "😳", "🥺", // etc
+        ```
+
+      - An emoji id for custom emojis. You can get a custom emoji's ID by sending `\:YourCustomEmoji:` in chat (prefix a backslash `\` character in front of your desired emoji).
+
+        ```js
+        "716344914706694165", "622635442013208589", // etc
+        ```
+
   - `overrideEmojis` are the reaction emojis that automatically pins the message (`upvote`) or prevents the pinning of the message (`downvote`) no matter what the count was at.
   - `overrideUserIds` are the users who can use `overrideEmojis`.
 
-    > Leave `downvote`'s array options empty `[]` if you wish to not use the downvote logic.
+  > Leave `downvote`'s array options empty `[]` if you wish to not use the downvote logic.
 
-  - An emoji can be:
+- `pinnedIndicator`
 
-    - A unicode emoji. https://emojipedia.org is a good reference to copy and paste from.
-
-      ```js
-      "😳", "🥺", // etc
-      ```
-
-    - An emoji id for custom emojis. You can get a custom emoji's ID by sending `\:YourCustomEmoji:` in chat (prefix a backslash `\` character in front of your desired emoji).
-
-      ```js
-      "716344914706694165", "622635442013208589", // etc
-      ```
+  - `message` is the string the bot sends post-pin in the channel where the original message is.
+    - Use `{1}` to mention the user whose message was pinned and use `{2}` to mention the starboard channel (it uses `channelId`).
+    - If blank, a post-pin message will not be sent.
+  - `pingUser` determines whether `message` pings the user (`true`) or not (`false`).
+    - The bot makes a quick message edit to mention the user, thus avoiding the ping.
 
 - `embed`
 

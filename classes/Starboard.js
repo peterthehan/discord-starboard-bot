@@ -167,4 +167,32 @@ module.exports = class Starboard {
 
     webhook.send({ embeds, ...webhookOptions });
   }
+
+  async sendPinnedIndicatorMessage() {
+    if (!this.rule.pinnedIndicator.message) {
+      return;
+    }
+
+    if (this.rule.pinnedIndicator.pingUser) {
+      return this.message.channel.send(
+        this.rule.pinnedIndicator.message
+          .replace(/\{1\}/g, this.message.author)
+          .replace(/\{2\}/g, `<#${this.rule.channelId}>`)
+      );
+    }
+
+    const nonMentionable = `\`@${this.message.author.tag}\``;
+
+    const newMessage = await this.message.channel.send(
+      this.rule.pinnedIndicator.message
+        .replace(/\{1\}/g, nonMentionable)
+        .replace(/\{2\}/g, `<#${this.rule.channelId}>`)
+    );
+    newMessage.edit(
+      newMessage.content.replace(
+        new RegExp(nonMentionable, "gi"),
+        this.message.author
+      )
+    );
+  }
 };
