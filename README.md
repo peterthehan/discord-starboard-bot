@@ -23,17 +23,19 @@ A Discord bot that allows for the democratic pinning of messages.
   {
     "guildId": "GUILD_ID",
     "channelId": "CHANNEL_1_ID",
-    "reactionThreshold": 5,
+    "reactionThreshold": 3,
     "votePolicy": "public",
     "upvote": {
       "emojis": ["⭐", "⬆️"],
       "overrideEmojis": ["🌟"],
-      "overrideUserIds": ["USER_1_ID", "USER_2_ID"]
+      "overrideUserIds": ["USER_1_ID", "USER_2_ID"],
+      "overrideRoleIds": ["ROLE_1_ID"]
     },
     "downvote": {
       "emojis": ["⬇️"],
       "overrideEmojis": ["⛔"],
-      "overrideUserIds": ["USER_1_ID"]
+      "overrideUserIds": ["USER_1_ID"],
+      "overrideRoleIds": []
     },
     "pinnedIndicator": {
       "message": "{1}'s message was pinned to {2}.",
@@ -88,6 +90,7 @@ A Discord bot that allows for the democratic pinning of messages.
 
   - `overrideEmojis` are the reaction emojis that automatically pins the message (`upvote`) or prevents the pinning of the message (`downvote`) no matter what the count was at.
   - `overrideUserIds` are the users who can use `overrideEmojis`.
+  - `overrideRoleIds` are the roles whose assigned users can use `overrideEmojis`.
 
   > Leave `downvote`'s array options empty `[]` if you wish to not use the downvote logic.
 

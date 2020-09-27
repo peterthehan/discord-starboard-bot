@@ -63,9 +63,13 @@ module.exports = class Starboard {
   }
 
   validateOverrides(voteType) {
+    const memberRoles =
+      this.message.guild.members.resolve(this.user.id).roles.cache || new Map();
+
     return (
       voteType.overrideEmojis.includes(this.emoji) &&
-      voteType.overrideUserIds.includes(this.user.id)
+      (voteType.overrideUserIds.includes(this.user.id) ||
+        voteType.overrideRoleIds.some((roleId) => memberRoles.has(roleId)))
     );
   }
 
