@@ -19,7 +19,7 @@ A Discord bot that allows for the democratic pinning of messages.
 
 2. Download this widget and move the `src-discord-starboard-bot` folder into the [src/widgets/](https://github.com/peterthehan/create-discord-bot/tree/master/app/src/widgets) folder created in step 1.
 
-3. Open [config.json](https://github.com/peterthehan/discord-starboard-bot/blob/master/config.json) to configure your own settings:
+3. Open [config.json](https://github.com/peterthehan/discord-starboard-bot/blob/master/src-discord-starboard-bot/config.json) to configure your own settings:
 
    ```json
    [
