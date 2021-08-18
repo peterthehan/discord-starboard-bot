@@ -26,7 +26,7 @@ A Discord bot that allows for the democratic pinning of messages.
      {
        "guildId": "258167954913361930",
        "channelId": "752760008483012639",
-       "reactionThreshold": 3,
+       "reactionThreshold": 2,
        "votePolicy": "hidden",
        "upvote": {
          "emojis": ["⭐", "⬆️"],
