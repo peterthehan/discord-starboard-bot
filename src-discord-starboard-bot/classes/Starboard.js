@@ -13,7 +13,7 @@ module.exports = class Starboard {
       this.message.system ||
       this.user.bot ||
       this.user.system ||
-      this.message.channel.type !== "text" ||
+      this.message.channel.type === "DM" ||
       !(this.message.guild.id in this.client.starboardRules)
     ) {
       return false;
@@ -124,9 +124,7 @@ module.exports = class Starboard {
 
   getImages() {
     const embeds = [
-      ...this.message.attachments
-        .array()
-        .map(({ url }) => ({ image: { url } })),
+      ...this.message.attachments.map(({ url }) => ({ image: { url } })),
       ...this.message.embeds,
     ]
       .slice(0, 4)

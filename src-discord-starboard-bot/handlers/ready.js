@@ -1,7 +1,7 @@
-const rules = require("../config");
+const rules = require("../config.json");
 
 module.exports = async (client) => {
-  console.log("starboard: ready");
+  console.log(__dirname.split("\\").slice(-2)[0]);
 
   client.starboardRules = {};
   rules.forEach((rule) => {
