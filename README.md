@@ -1,6 +1,6 @@
 # Discord Starboard Bot
 
-[![Discord](https://discordapp.com/api/guilds/258167954913361930/embed.png)](https://discord.gg/WjEFnzC) [![Twitter Follow](https://img.shields.io/twitter/follow/peterthehan.svg?style=social)](https://twitter.com/peterthehan)
+[![Discord](https://discord.com/api/guilds/258167954913361930/embed.png)](https://discord.gg/WjEFnzC) [![Twitter Follow](https://img.shields.io/twitter/follow/peterthehan.svg?style=social)](https://twitter.com/peterthehan)
 
 A Discord bot that allows for the democratic pinning of messages.
 
@@ -17,9 +17,9 @@ A Discord bot that allows for the democratic pinning of messages.
 
    > Don't forget to give your bot the `Manage Webhooks` permission!
 
-2. Download this widget and move the `src-discord-starboard-bot` folder into the [src/widgets/](https://github.com/peterthehan/create-discord-bot/tree/master/app/src/widgets) folder created in step 1.
+2. Download this bot and move the `src-discord-starboard-bot` folder into the [/src/bots](https://github.com/peterthehan/create-discord-bot/tree/master/src/bots) folder from step 1.
 
-3. Open [config.json](https://github.com/peterthehan/discord-starboard-bot/blob/master/src-discord-starboard-bot/config.json) to configure your own settings:
+3. Open [config.json](./src-discord-starboard-bot/config.json) to configure your own settings:
 
    ```json
    [
@@ -122,5 +122,5 @@ A Discord bot that allows for the democratic pinning of messages.
 Visit for more help or information!
 
 <a href="https://discord.gg/WjEFnzC">
-  <img src="https://discordapp.com/api/guilds/258167954913361930/embed.png?style=banner2" title="Discord Server"/>
+  <img src="https://discord.com/api/guilds/258167954913361930/embed.png?style=banner2" title="Discord Server"/>
 </a>
